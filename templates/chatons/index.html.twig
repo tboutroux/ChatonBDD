@@ -23,8 +23,8 @@
                 <td>{{ chaton.categorie.titre }}</td>
                 <td>{{ chaton.Photo }}</td>
                 <td>
-                    <a href="{{ path('app_chatons_show', {'id': chaton.id}) }}">show</a>
-                    <a href="{{ path('app_chatons_edit', {'id': chaton.id}) }}">edit</a>
+                    <a href="{{ path('app_chatons_show', {'id': chaton.id}) }}" class="btn btn-warning">show</a>
+                    <a href="{{ path('app_chatons_edit', {'id': chaton.id}) }}" class="btn btn-dark">edit</a>
                 </td>
             </tr>
         {% else %}

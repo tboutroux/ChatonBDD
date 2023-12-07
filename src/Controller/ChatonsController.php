@@ -30,6 +30,18 @@ class ChatonsController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            $file = $form->get('image')->getData(); // On récupère le fichier
+
+            $fileName = md5(uniqid()).'.'.$file->guessExtension(); // On génère un nom de fichier
+
+            $file->move( // On déplace le fichier
+                $this->getParameter('upload_directory'), // Vers le dossier configuré dans services.yaml
+                $fileName // Avec le nom généré
+            );
+
+            $chaton->setPhoto($fileName);
+
             $entityManager->persist($chaton);
             $entityManager->flush();
 
