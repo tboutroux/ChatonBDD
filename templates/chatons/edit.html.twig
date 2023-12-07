@@ -1,13 +1,11 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Chaton{% endblock %}
+{% block title %}New Chaton{% endblock %}
 
 {% block body %}
-    <h1>Edit Chaton</h1>
+    <h1>Create new Chaton</h1>
 
-    {{ include('chatons/_form.html.twig', {'button_label': 'Update'}) }}
+    {{ include('chatons/_form.html.twig') }}
 
-    <a href="{{ path('app_chatons_index') }}">back to list</a>
-
-    {{ include('chatons/_delete_form.html.twig') }}
+    <a href="{{ path('app_chatons_index') }}" class="btn btn-warning">back to list</a>
 {% endblock %}
