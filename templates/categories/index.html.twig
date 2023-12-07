@@ -15,7 +15,9 @@
             <tr>
                 <td>{{ categorie.titre }}</td>
                 <td>{{ categorie.description }}</td>
-                <td></td>
+                <td>
+                    <a href="{{ path('app_categories_modifier', {'id': categorie.id}) }}" class="btn btn-warning">Modifier</a>
+                </td>
             </tr>
         {% endfor %}
 

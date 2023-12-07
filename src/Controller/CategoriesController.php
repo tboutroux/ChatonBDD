@@ -53,4 +53,34 @@ class CategoriesController extends AbstractController
             "formulaire"=>$form->createView(),
             ]);
     }
+
+    #[Route('/categories/modifier/{id}', name: 'app_categories_modifier')]
+    public function modifier($id, Request $request, ManagerRegistry $doctrine): Response
+    {
+        //créer un formulaire
+        //on crée un objet de la classe Categorie
+        $repo = $doctrine->getRepository(Categorie::class);
+        $categorie = $repo->find($id);
+        //on crée un formulaire
+        $form = $this->createForm(CategorieType::class, $categorie);
+
+        //todo : traiter le formulaire en retour
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            //on récupère le manager de doctrine
+            $em = $doctrine->getManager();
+            //on demande au manager de sauvegarder l'objet
+            $em->persist($categorie);
+            //on exécute la requête
+            $em->flush();
+
+            //on redirige vers la liste des catégories
+            return $this->redirectToRoute('app_categories');
+        }
+
+        return $this->render('categories/ajouter.html.twig', [
+            "formulaire"=>$form->createView(),
+            ]);
+    }
 }
