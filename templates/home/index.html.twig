@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomeController!{% endblock %}
+{% block title %}Photothèque de Chatons version BDD{% endblock %}
 
 {% block body %}
 <style>
@@ -9,12 +9,22 @@
 </style>
 
 <div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    <h1>Bienvenue sur la Photothèque de Chatons</h1>
+    <p>Version BDD</p>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/home/tetetoto/Ecole/Symfony/ChatonBDD/src/Controller/HomeController.php'|file_link(0) }}">src/Controller/HomeController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/home/tetetoto/Ecole/Symfony/ChatonBDD/templates/home/index.html.twig'|file_link(0) }}">templates/home/index.html.twig</a></code></li>
-    </ul>
+    <div style="display: flex; justify-content: space-around; align-items: center;">
+
+        {% for categorie in categories %}
+
+            <a class="btn btn-outline-secondary" aria-current="page" href="{{ path("app_chatons_categorie", {"categorie": categorie.id()}) }}">{{ categorie.getTitre() }}</a>
+
+        {% endfor %}
+
+    </div>
+
+    <div class="d-grid gap-2" style="margin-top: 5vh;">
+        <a class="btn btn-dark" aria-current="page" href="{{ path("app_chatons_new") }}">Ajouter un chaton</a>
+    </div>
+
 </div>
 {% endblock %}

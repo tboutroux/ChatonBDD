@@ -1,0 +1,5 @@
+{% for categorie in categories %}
+    <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="{{ path("app_chatons_categorie", {"categorie": categorie.id()}) }}">{{ categorie.getTitre() }}</a>
+    </li>
+{% endfor %}

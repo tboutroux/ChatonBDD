@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Chaton index{% endblock %}
+{% block title %}Chaton {{ categorie }}{% endblock %}
 
 {% block body %}
-    <h1>Chaton index</h1>
+    <h1>Chaton {{ categorie }}</h1>
 
     <div style="display: flex; gap: 5vw; justify-content: center; align-items: center; margin-bottom: 2vh">
 
@@ -14,7 +14,6 @@
                 <div class="card-body">
                     <h5 class="card-title">{{ chaton.Nom }}</h5>
                     <p class="card-text">{{ chaton.categorie.titre }}</p>
-                    <a href="{{ path('app_chatons_show', {'id': chaton.id}) }}" class="btn btn-warning">show</a>
                     <a href="{{ path('app_chatons_edit', {'id': chaton.id}) }}" class="btn btn-dark">edit</a>
                 </div>
             </div>

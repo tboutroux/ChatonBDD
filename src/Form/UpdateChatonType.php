@@ -9,7 +9,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType; 
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 
-class ChatonType extends AbstractType
+class UpdateChatonType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
@@ -18,7 +18,7 @@ class ChatonType extends AbstractType
             ->add('image', FileType::class, [
                 'label' => 'Image du chaton',
                 'mapped' => false, // Le champ n'est pas mappé à une propriété de l'entité
-                'required' => true, // Le champ n'est pas obligatoire
+                'required' => false, // Le champ n'est pas obligatoire
             ])// Upload une photo
             ->add('Categorie', null, [
                 'choice_label' => 'Titre',
